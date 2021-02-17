@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Statistics from './Components/Statistics/Statistics';
-import Section from './Components/Section/Section';
-import FeedbackOptions from './Components/FeedbackOptions/FeedbackOptions';
-import Notification from './Components/Notification/Notification';
+import Statistics from './Components/Statistics';
+import Section from './Components/Section';
+import FeedbackOptions from './Components/FeedbackOptions';
+import Notification from './Components/Notification';
 
 class App extends Component {
   state = {
@@ -41,35 +40,33 @@ class App extends Component {
   render() {
     const { good, neutral, bad } = this.state;
     const total = this.countTotalFeedback();
-    const posPerc = this.countPositiveFeedbackPercentage();
+    const positivePercentage = this.countPositiveFeedbackPercentage();
 
     return (
       <>
-        <Section title={'Leave your feedback'} />
-        <FeedbackOptions
-          options={this.state}
-          onLeaveFeedback={this.handleButtonValue}
-        />
-        <Section />
-
-        <Section title={'Statistics'} />
-        {total > 0 ? (
-          <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={total}
-            positivePercentage={posPerc}
+        <Section title={'Leave your feedback'}>
+          <FeedbackOptions
+            options={this.state}
+            onLeaveFeedback={this.handleButtonValue}
           />
-        ) : (
-          <Notification message="No feedback given"></Notification>
-        )}
-        <Section />
+        </Section>
+
+        <Section title={'Statistics'}>
+          {total > 0 ? (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={total}
+              positivePercentage={positivePercentage}
+            />
+          ) : (
+            <Notification message="No feedback given" />
+          )}
+        </Section>
       </>
     );
   }
 }
-
-App.propTypes = {};
 
 export default App;
