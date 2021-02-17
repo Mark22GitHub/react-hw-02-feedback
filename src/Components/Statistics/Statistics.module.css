@@ -1,0 +1,18 @@
+.text {
+  font-size: 20px;
+}
+
+.textGood {
+  color: green;
+}
+
+.textNeutral {
+  color: grey;
+}
+
+.textBad {
+  color: red;
+}
+.positive {
+  color: rgb(11, 224, 47);
+}
