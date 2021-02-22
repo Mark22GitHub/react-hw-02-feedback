@@ -12,18 +12,8 @@ class App extends Component {
   };
 
   handleButtonValue = option => {
-    this.setState({ [option]: this.state[option] + 1 });
+    this.setState(prevState => ({ [option]: prevState[option] + 1 }));
   };
-
-  // handleButtonValue = option => {
-  //   this.setState(prevState => ({ [option]: prevState[option] + 1 }));
-  // };
-
-  // handleButtonValue = () => {
-  //   this.setState(state => ({
-  //     [option]: state[option] + 1,
-  //   }));
-  // };
 
   countTotalFeedback() {
     return Object.values(this.state).reduce(
